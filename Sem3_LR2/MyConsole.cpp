@@ -45,22 +45,25 @@ struct Car{
     } type;
 };
 
+void Init(struct Car &car) {
+    car.info.model = "Машина";
+    car.info.color = "Красный";
+    car.size.lenght = 100;
+    car.size.width = 100;
+    car.size.high = 100;
+    car.param.transmission = "Механика";
+    car.param.enginePower = 150;
+    car.param.tankCapacity = 50;
+    car.param.maxSpeed = 200;
+    car.type.typeBody = "Седан";
+    car.type.numberSeats = 5;
+}
 void Read(struct Car car[MAX_SIZE], int countCars = 1) {
 #ifdef DEBUG
     cout << "Debug Mode" << endl;
     for (int i = 0; i < countCars; i++)
     {
-        car[i].info.model = "Машина";
-        car[i].info.color = "Красный";
-        car[i].size.lenght = 100;
-        car[i].size.width = 100;
-        car[i].size.high = 100;
-        car[i].param.transmission = "Механика";
-        car[i].param.enginePower = 150;
-        car[i].param.tankCapacity = 50;
-        car[i].param.maxSpeed = 200;
-        car[i].type.typeBody = "Седан";
-        car[i].type.numberSeats = 5;
+        Init(car[i]);
     }
 #else
     for (int i = 0; i < countCars; i++)
@@ -121,8 +124,8 @@ int main()
     SetConsoleOutputCP(1251);
 
     struct Car vaz;
-    cout << "\tVvod" << endl;
+    cout << "\tВвод" << endl;
     Read(&vaz);
-    cout << "\tVivod" << endl;
+    cout << "\tВывод" << endl;
     Print(&vaz);
 }
