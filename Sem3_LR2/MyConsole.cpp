@@ -4,11 +4,6 @@
 #include <iostream>
 #include <string>
 
-#define DEBUG true;
-
-using namespace std;
-
-const int MAX_SIZE = 100;
 /*
 Структура Машина:
     Структура Информация о машина:
@@ -29,22 +24,23 @@ const int MAX_SIZE = 100;
 */
 struct Car{
     struct InfoAbout {
-        string model;
-        string color;
-    } info;
+        std::string model;
+        std::string color;
+    };
     struct Size {
         int lenght, width, high;
-    } size;
+    };
     struct Parameters {
-        string transmission;
-        int enginePower, tankCapacity, maxSpeed;     
-    } param;
+        std::string transmission;
+        int engiinePower, tankCapacity, maxSpeed;     
+    };
     struct TypeCar {
-        string typeBody;
+        std::string typeBody;
         int numberSeats;
-    } type;
+    };
 };
 
+<<<<<<< HEAD
 void Init(struct Car &car) {
     car.info.model = "Машина";
     car.info.color = "Красный";
@@ -117,15 +113,21 @@ void Print(struct Car car[MAX_SIZE], int countCars = 1) {
     }
 }
 
+=======
+>>>>>>> parent of 6526421 (Functions: Read, Print)
 int main()
 {
     setlocale(LC_ALL, "rus");
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251);
 
+<<<<<<< HEAD
     struct Car vaz;
     cout << "\tВвод" << endl;
     Read(&vaz);
     cout << "\tВывод" << endl;
     Print(&vaz);
+=======
+
+>>>>>>> parent of 6526421 (Functions: Read, Print)
 }
