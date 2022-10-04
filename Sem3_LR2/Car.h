@@ -8,6 +8,7 @@
 using namespace std;
 
 const int MAX_SIZE = 100;
+const int THIS_YEAR = 2022;
 
 /*
 Структура Машина:
@@ -19,10 +20,10 @@ const int MAX_SIZE = 100;
         ширина,
         высота
     Структура Характеристики:
-        коробка передач,
         мощность двигателя,
         объем бака,
         максимальная скорость
+        пробег
     Структура Тип машины:
         кузов,
         кол-во мест
@@ -38,3 +39,6 @@ struct Car {
 Car CarInit();
 void CarInputCP(struct Car car[MAX_SIZE], int countCars = 1);
 void CarOutputCP(struct Car car[MAX_SIZE], int countCars = 1);
+int CarAge(struct Car car);
+void ComprasionByMilage(struct Car car1, struct Car car2);
+

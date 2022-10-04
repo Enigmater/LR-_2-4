@@ -2,7 +2,7 @@
 #include <string>
 
 struct Size {
-    int lenght, width, high;
+    float lenght, width, high;
 };
 
-Size SizeInit();
+Size SizeInit(float lenght = 2, float width = 1.5, float high = 1);

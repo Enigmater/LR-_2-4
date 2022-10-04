@@ -2,8 +2,7 @@
 #include <string>
 
 struct Parameters {
-    std::string transmission;
-    int enginePower, tankCapacity, maxSpeed;
+    float enginePower, tankCapacity, maxSpeed, fuel—onsumption, mileage;
 };
 
-Parameters ParamInit();
+Parameters ParamInit(float enginePower = 130, float tankCapacity = 50, float maxSpeed = 200, float milage = 50000);

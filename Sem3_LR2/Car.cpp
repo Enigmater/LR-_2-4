@@ -1,7 +1,7 @@
 #include "Car.h"
 #include <iostream>
 
-#define DEBUGb true;
+#define DEBUG true;
 
 Car CarInit()
 {
@@ -69,3 +69,26 @@ void CarOutputCP(Car car[MAX_SIZE], int countCars)
         cout << "Тип(Кол-во мест): " << car[i].type.numberSeats << endl;
     }
 }
+
+int CarAge(Car car)
+{
+    int age = THIS_YEAR - car.info.yearRelease;
+    return age;
+}
+
+void ComprasionByMilage(Car car1, Car car2)
+{
+    float difference = car1.param.mileage - car2.param.mileage;
+    if (difference < 0) {
+        printf("Пробег первого авто < пробег вторго авто");
+    }
+    else if (difference > 0) {
+        printf("Пробег первого авто > пробег вторго авто");
+    }
+    else {
+        printf("Пробег первого авто = пробег вторго авто");
+    }
+}
+
+
+

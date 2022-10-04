@@ -1,7 +1,7 @@
 #include "Parameters.h"
 
-Parameters ParamInit()
+Parameters ParamInit(float enginePower, float tankCapacity, float maxSpeed, float milage)
 {
-    Parameters param{"Коробка передач", 0, 0, 0};
+    Parameters param{enginePower, tankCapacity, maxSpeed, milage};
     return param;
 }

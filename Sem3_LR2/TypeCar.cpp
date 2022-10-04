@@ -1,7 +1,7 @@
 #include "TypeCar.h"
 
-TypeCar TypeCarInit()
+TypeCar TypeCarInit(std::string typeBody, int numberSeats)
 {
-    TypeCar type{"Тип кузова", 5};
+    TypeCar type{typeBody, numberSeats};
     return type;
 }

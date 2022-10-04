@@ -1,7 +1,7 @@
 #include "Size.h"
 
-Size SizeInit()
+Size SizeInit(float lenght, float width, float high)
 {
-	Size size{0, 0, 0};
+	Size size{lenght, width, high};
 	return size;
 }
