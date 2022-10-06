@@ -6,4 +6,4 @@ struct TypeCar {
     int numberSeats;
 };
 
-TypeCar TypeCarInit(std::string typeBody = "Body", int numberSeats = 5);
+TypeCar TypeCarInit(std::string typeBody, int numberSeats);

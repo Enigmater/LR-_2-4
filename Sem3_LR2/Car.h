@@ -35,7 +35,7 @@ struct Car {
     struct TypeCar type;
 };
 
-Car CarInit();
+Car CarInit(Car CarInit);
 void CarInputCP(struct Car car[], int countCars = 1);
 void CarOutputCP(struct Car car[], int countCars = 1);
 

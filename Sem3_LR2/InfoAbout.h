@@ -8,4 +8,4 @@ struct InfoAbout {
     int yearRelease;
 };
 
-InfoAbout InfoInit(string model = "Car", string color = "Color", int yearRealease = 2000);
+InfoAbout InfoInit(string model, string color, int yearRealease = 2000);

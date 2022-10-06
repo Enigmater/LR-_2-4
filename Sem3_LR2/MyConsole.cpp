@@ -40,5 +40,4 @@ int main()
     CarInputCP(dinamicMemory, COUNT_CARS_DINAMIC);
     printf("\tВывод\n");
     CarOutputCP(dinamicMemory, COUNT_CARS_DINAMIC);
-
 }

@@ -2,7 +2,7 @@
 #include <string>
 
 struct Parameters {
-    float enginePower, tankCapacity, maxSpeed, fuel—onsumption, mileage;
+    float enginePower, tankCapacity, maxSpeed, mileage;
 };
 
-Parameters ParamInit(float enginePower = 130, float tankCapacity = 50, float maxSpeed = 200, float milage = 50000);
+Parameters ParamInit(float enginePower, float tankCapacity, float maxSpeed, float milage);

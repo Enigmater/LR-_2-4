@@ -4,51 +4,65 @@
 #include "Car.h"
 #include <iostream>
 
-Car CarInit()
+Car CarInit(Car CarInit)
 {
-    Car car{ InfoInit() , SizeInit() , ParamInit() , TypeCarInit() };
+    Car car{    
+        InfoInit(CarInit.info.model, CarInit.info.color, CarInit.info.yearRelease),      
+        SizeInit(CarInit.size.lenght, CarInit.size.width, CarInit.size.high),
+        ParamInit(CarInit.param.enginePower, CarInit.param.tankCapacity, CarInit.param.maxSpeed, CarInit.param.mileage), 
+        TypeCarInit(CarInit.type.typeBody, CarInit.type.numberSeats)
+    };
     return car;
 }
 
 void CarInputCP(Car car[], int countCars)
 {
-#ifdef DEBUG
+    Car carInit;
     cout << "Initiaization Mode" << endl;
+    carInit.info.model = "Car";
+    carInit.info.color = "Color";
+    carInit.info.yearRelease = 2000;
+    carInit.size.lenght = 2.0f;
+    carInit.size.width = 1.0f;
+    carInit.size.high = 1.0f;
+    carInit.param.enginePower = 150.0f;
+    carInit.param.tankCapacity = 50.0f;
+    carInit.param.maxSpeed = 200.0f;
+    carInit.param.mileage = 10000.0f;
+    carInit.type.typeBody = "Sedan";
+    carInit.type.numberSeats = 5;
     for (int i = 0; i < countCars; i++)
     {
-        car[i] = CarInit();
-    }
-#else
-    for (int i = 0; i < countCars; i++)
-    {
+#ifndef DEBUG
         printf("\tCar %d\n", i + 1);
         printf("Модель: ");
-        scanf("%s", &car[i].info.model);
+        scanf("%s", &carInit.info.model);
         printf("Цвет: ");
-        scanf("%s", &car[i].info.color);
+        scanf("%s", &carInit.info.color);
 
         printf("Размеры(длина): ");
-        scanf("%f", &car[i].size.lenght);
+        scanf("%f", &carInit.size.lenght);
         printf("Размеры(ширина): ");
-        scanf("%f", &car[i].size.width);
+        scanf("%f", &carInit.size.width);
         printf("Размеры(высота): ");
-        scanf("%f", &car[i].size.high);
+        scanf("%f", &carInit.size.high);
 
         printf("Параметры(Мощность): ");
-        scanf("%f", &car[i].param.enginePower);
+        scanf("%f", &carInit.param.enginePower);
         printf("Параметры(Объем бака): ");
-        scanf("%f", &car[i].param.tankCapacity);
+        scanf("%f", &carInit.param.tankCapacity);
         printf("Параметры(Максимальная скорость): ");
-        scanf("%f", &car[i].param.maxSpeed);
+        scanf("%f", &carInit.param.maxSpeed);
         printf("Параметры(Пробег): ");
-        scanf("%f", &car[i].param.mileage);
+        scanf("%f", &carInit.param.mileage);
 
         printf("Тип(Кузов): ");
-        scanf("%s", &car[i].type.typeBody);
+        scanf("%s", &carInit.type.typeBody);
         printf("Тип(Кол-во мест): ");
-        scanf("%d", &car[i].type.numberSeats);
-    }
+        scanf("%d", &carInit.type.numberSeats);
 #endif // DEBUG
+        car[i] = CarInit(carInit);
+    }
 }
 
 void CarOutputCP(Car car[], int countCars)

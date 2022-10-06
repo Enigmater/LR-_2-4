@@ -5,4 +5,4 @@ struct Size {
     float lenght, width, high;
 };
 
-Size SizeInit(float lenght = 2, float width = 1.5, float high = 1);
+Size SizeInit(float lenght, float width, float high);
