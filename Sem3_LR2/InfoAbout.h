@@ -1,10 +1,11 @@
 #pragma once
 #include <string>
+using namespace std;
 
 struct InfoAbout {
-    std::string model;
-    std::string color;
+    string model;
+    string color;
     int yearRelease;
 };
 
-InfoAbout InfoInit(std::string model = "Модель машины", std::string color = "Цвет машины", int yearRealease = 2000);
+InfoAbout InfoInit(string model = "Car", string color = "Color", int yearRealease = 2000);

@@ -1,7 +1,8 @@
+#define _CRT_SECURE_NO_WARNINGS
+#define DEBUG true;
+
 #include "Car.h"
 #include <iostream>
-
-#define DEBUG true;
 
 Car CarInit()
 {
@@ -9,7 +10,7 @@ Car CarInit()
     return car;
 }
 
-void CarInputCP(Car car[MAX_SIZE], int countCars)
+void CarInputCP(Car car[], int countCars)
 {
 #ifdef DEBUG
     cout << "Initiaization Mode" << endl;
@@ -20,53 +21,56 @@ void CarInputCP(Car car[MAX_SIZE], int countCars)
 #else
     for (int i = 0; i < countCars; i++)
     {
-        cout << "Модель: ";
-        cin >> car[i].info.model;
-        cout << "Цвет: ";
-        cin >> car[i].info.color;
+        printf("\tCar %d\n", i + 1);
+        printf("Модель: ");
+        scanf("%s", &car[i].info.model);
+        printf("Цвет: ");
+        scanf("%s", &car[i].info.color);
 
-        cout << "Размеры(длина): ";
-        cin >> car[i].size.lenght;
-        cout << "Размеры(ширина): ";
-        cin >> car[i].size.width;
-        cout << "Размеры(высота): ";
-        cin >> car[i].size.high;
+        printf("Размеры(длина): ");
+        scanf("%f", &car[i].size.lenght);
+        printf("Размеры(ширина): ");
+        scanf("%f", &car[i].size.width);
+        printf("Размеры(высота): ");
+        scanf("%f", &car[i].size.high);
 
-        cout << "Параметры(Коробка передач): ";
-        cin >> car[i].param.transmission;
-        cout << "Параметры(Мощность): ";
-        cin >> car[i].param.enginePower;
-        cout << "Параметры(Объем бака): ";
-        cin >> car[i].param.tankCapacity;
-        cout << "Параметры(Максимальная скорость): ";
-        cin >> car[i].param.maxSpeed;
+        printf("Параметры(Мощность): ");
+        scanf("%f", &car[i].param.enginePower);
+        printf("Параметры(Объем бака): ");
+        scanf("%f", &car[i].param.tankCapacity);
+        printf("Параметры(Максимальная скорость): ");
+        scanf("%f", &car[i].param.maxSpeed);
+        printf("Параметры(Пробег): ");
+        scanf("%f", &car[i].param.mileage);
 
-        cout << "Тип(Кузов): ";
-        cin >> car[i].type.typeBody;
-        cout << "Тип(Кол-во мест): ";
-        cin >> car[i].type.numberSeats;
+        printf("Тип(Кузов): ");
+        scanf("%s", &car[i].type.typeBody);
+        printf("Тип(Кол-во мест): ");
+        scanf("%d", &car[i].type.numberSeats);
     }
 #endif // DEBUG
 }
 
-void CarOutputCP(Car car[MAX_SIZE], int countCars)
+void CarOutputCP(Car car[], int countCars)
 {
     for (int i = 0; i < countCars; i++)
     {
-        cout << "Модель: " << car[i].info.model << endl;
-        cout << "Цвет: " << car[i].info.color << endl;
+        printf("\tCar %d\n", i + 1);
+        printf("Модель: %s\n", car[i].info.model);
+        printf("Цвет: %s\n", car[i].info.color);
+        printf("Дата выпуска: %d\n", car[i].info.yearRelease);
 
-        cout << "Размеры(длина): " << car[i].size.lenght << endl;
-        cout << "Размеры(ширина): " << car[i].size.width << endl;
-        cout << "Размеры(высота): " << car[i].size.high << endl;
+        printf("Размеры(длина): %f\n", car[i].size.lenght);
+        printf("Размеры(ширина): %f\n", car[i].size.width);
+        printf("Размеры(высота): %f\n", car[i].size.high);
 
-        cout << "Параметры(Коробка передач): " << car[i].param.transmission << endl;
-        cout << "Параметры(Мощность): " << car[i].param.enginePower << endl;
-        cout << "Параметры(Объем бака): " << car[i].param.tankCapacity << endl;
-        cout << "Параметры(Максимальная скорость):" << car[i].param.maxSpeed << endl;
+        printf("Параметры(Мощность): %f\n", car[i].param.enginePower);
+        printf("Параметры(Объем бака): %f\n", car[i].param.tankCapacity);
+        printf("Параметры(Максимальная скорость): %f\n", car[i].param.maxSpeed);
+        printf("Параметры(пробег): %f\n", car[i].param.mileage);
 
-        cout << "Тип(Кузов): " << car[i].type.typeBody << endl;
-        cout << "Тип(Кол-во мест): " << car[i].type.numberSeats << endl;
+        printf("Тип(Кузов): %s\n", car[i].type.typeBody);
+        printf("Тип(Кол-во мест): %d\n", car[i].type.numberSeats);
     }
 }
 
@@ -76,19 +80,29 @@ int CarAge(Car car)
     return age;
 }
 
+void PrintCarAge(struct Car car[], int countCars)
+{
+    printf("\n\tВозраст машины\n");
+    for (int i = 0; i < countCars; i++) {
+        printf("Age Car#%d = %d\n", i + 1, CarAge(car[i]));
+    } 
+}
+
 void ComprasionByMilage(Car car1, Car car2)
 {
+    printf("\n\tСравнение машин по пробегу\n");
     float difference = car1.param.mileage - car2.param.mileage;
     if (difference < 0) {
-        printf("Пробег первого авто < пробег вторго авто");
+        printf("Пробег первого авто < пробег вторго авто\n");
     }
     else if (difference > 0) {
-        printf("Пробег первого авто > пробег вторго авто");
+        printf("Пробег первого авто > пробег вторго авто\n");
     }
     else {
-        printf("Пробег первого авто = пробег вторго авто");
+        printf("Пробег первого авто = пробег вторго авто\n");
     }
 }
+
 
 
 
