@@ -7,7 +7,6 @@
 #include "Car.h";
 #include "malloc.h"
 
-const int COUNT_CARS_STATIC = 2;
 const int COUNT_CARS_DINAMIC = 2;
 
 int main()
@@ -16,28 +15,23 @@ int main()
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251);
 
-    printf("\tStatic\n");
-    struct Car staticMemory[COUNT_CARS_STATIC];
-    printf("\tВвод");
-    printf("\n___________________________________________\n");
-    CarInputCP(staticMemory, COUNT_CARS_STATIC);
-    printf("\tВывод\n");
-    CarOutputCP(staticMemory, COUNT_CARS_STATIC);
-    PrintCarAge(staticMemory, COUNT_CARS_STATIC);
-    printf("\n___________________________________________\n");
+    Car* car = new class Car[COUNT_CARS_DINAMIC];
 
-    struct Car staticMemory1;
-    struct Car staticMemory2;
-    CarInputCP(&staticMemory1);
-    CarInputCP(&staticMemory2);
+    cout << "\tВвод данных" << endl;
+    for (int i = 0; i < COUNT_CARS_DINAMIC; i++)
+    {
+        car[i].Read();
+    }
 
-    ComprasionByMilage(staticMemory1, staticMemory2);
+    cout << "\n\tВывод данных" << endl;
+    for (int i = 0; i < COUNT_CARS_DINAMIC; i++)
+    {
+        car[i].Print();
+        cout << "\nВозраст машины: " << car[i].Age() << endl;
+    }
 
-    printf("\n___________________________________________\n");
-    printf("\tDinamic\n\n");
-    struct Car* dinamicMemory = (Car*)calloc(COUNT_CARS_DINAMIC, sizeof(Car));
-    printf("\tВвод\n");
-    CarInputCP(dinamicMemory, COUNT_CARS_DINAMIC);
-    printf("\tВывод\n");
-    CarOutputCP(dinamicMemory, COUNT_CARS_DINAMIC);
+    Car car1, car2;
+    car1.setMileage(10000.0f);
+    car2.setMileage(12000.0f);
+    car1.ComprasionByMilage(car2);
 }

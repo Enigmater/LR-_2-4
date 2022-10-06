@@ -1,9 +1,21 @@
 #pragma once
 #include <string>
 
-struct TypeCar {
-    std::string typeBody;
-    int numberSeats;
-};
+using namespace std;
 
-TypeCar TypeCarInit(std::string typeBody, int numberSeats);
+class TypeCar
+{
+private:
+	string typeBody;
+	int numberSeats;
+public:
+	TypeCar();
+	TypeCar(string typeBody);
+	TypeCar(string typeBody, int numberSeats);
+	string getTypeBody();
+	int getNumberSeats();
+
+	void setTypeBody(string typeBody);
+	void setNumberSeats(int numberSeats);
+	~TypeCar();
+};

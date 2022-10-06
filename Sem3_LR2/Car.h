@@ -10,36 +10,44 @@ using namespace std;
 const int THIS_YEAR = 2022;
 
 /*
-Структура Машина:
-    Структура Информация о машина:
+Класс Машина:
+    Класс Информация о машина:
         модель,
         цвет
-    Структура Размеры:
+    Класс Размеры:
         длина,
         ширина,
         высота
-    Структура Характеристики:
+    Класс Характеристики:
         мощность двигателя,
         объем бака,
         максимальная скорость
         пробег
-    Структура Тип машины:
+    Класс Тип машины:
         кузов,
         кол-во мест
 */
 
-struct Car {
-    struct InfoAbout info;
-    struct Size size;
-    struct Parameters param;
-    struct TypeCar type;
+class Car
+{
+private:
+    InfoAbout info;
+    Size size;
+    Parameters param;
+    TypeCar type;
+public:
+    Car();
+    Car(InfoAbout info);
+    Car(InfoAbout info, Size size, Parameters param, TypeCar type);
+    ~Car();
+
+    void setMileage(float mileage);
+
+    void Read();
+    void Print();
+    int Age();
+    void ComprasionByMilage(Car car);
+
 };
 
-Car CarInit(Car CarInit);
-void CarInputCP(struct Car car[], int countCars = 1);
-void CarOutputCP(struct Car car[], int countCars = 1);
-
-int CarAge(struct Car car);
-void PrintCarAge(struct Car car[], int countCars = 1);
-void ComprasionByMilage(struct Car car1, struct Car car2);
 
