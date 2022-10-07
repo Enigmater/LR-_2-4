@@ -30,8 +30,12 @@ int main()
         cout << "\nВозраст машины: " << car[i].Age() << endl;
     }
 
-    Car car1, car2;
-    car1.setMileage(10000.0f);
-    car2.setMileage(12000.0f);
-    car1.ComprasionByMilage(car2);
+    Car* car1 = new Car;
+    Car* car2 = new Car;
+    car1->setMileage(10000.0f);
+    car2->setMileage(12000.0f);
+    car1->ComprasionByMilage(*car2);
+
+    delete car1, car2;
+    delete[] car;
 }
