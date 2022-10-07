@@ -26,7 +26,7 @@ int main()
     PrintCarAge(staticMemory, COUNT_CARS_STATIC);
     printf("\n___________________________________________\n");
 
-    struct Car staticMemory1;
+    struct Car staticMemory1;;
     struct Car staticMemory2;
     CarInputCP(&staticMemory1);
     CarInputCP(&staticMemory2);

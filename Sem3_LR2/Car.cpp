@@ -18,7 +18,6 @@ Car CarInit(Car CarInit)
 void CarInputCP(Car car[], int countCars)
 {
     Car carInit;
-    cout << "Initiaization Mode" << endl;
     carInit.info.model = "Car";
     carInit.info.color = "Color";
     carInit.info.yearRelease = 2000;
@@ -70,8 +69,8 @@ void CarOutputCP(Car car[], int countCars)
     for (int i = 0; i < countCars; i++)
     {
         printf("\tCar %d\n", i + 1);
-        printf("Модель: %s\n", car[i].info.model);
-        printf("Цвет: %s\n", car[i].info.color);
+        cout << "Модель: " << car[i].info.model << endl;
+        cout << "Цвет: " << car[i].info.color << endl;
         printf("Дата выпуска: %d\n", car[i].info.yearRelease);
 
         printf("Размеры(длина): %f\n", car[i].size.lenght);
@@ -83,7 +82,7 @@ void CarOutputCP(Car car[], int countCars)
         printf("Параметры(Максимальная скорость): %f\n", car[i].param.maxSpeed);
         printf("Параметры(пробег): %f\n", car[i].param.mileage);
 
-        printf("Тип(Кузов): %s\n", car[i].type.typeBody);
+        cout << "Тип(Кузов): " << car[i].type.typeBody << endl;
         printf("Тип(Кол-во мест): %d\n", car[i].type.numberSeats);
     }
 }
