@@ -32,6 +32,7 @@ class Car
 {
     friend void ComprasionByMilage(Car&, Car car);
 private:
+    static int countCars;
     InfoAbout info;
     Size size;
     Parameters param;
@@ -45,6 +46,13 @@ public:
 
     void setMileage(float mileage);
 
+    static int getCountCars() {
+        return countCars;
+    }
+    static void setCountCars(int newCountCars) {
+        countCars = newCountCars;
+    }
+
     void Read();
     void Print();
     void Age(int* age);
@@ -54,10 +62,13 @@ public:
         return Car(this->type.getNumberSeats() + car.type.getNumberSeats());
     };
     Car& operator ++ () {
-        this->type.setNumberSeats(this->type.getNumberSeats() + 1);
+        this->param.setMaxSpeed(this->param.getMaxSpeed() + 10);
+        return *this;
     };
-    Car& operator ++ (int) {
-
+    Car operator ++ (int) {
+        Car post = *this;
+        ++* this;
+        return post;
     };
 };
 
