@@ -4,14 +4,14 @@ InfoAbout::InfoAbout()
 {
 	this->model = "Car model";
 	this->color = "Car color";
-	this->yearRelease = 2022;
+	this->yearRelease = 2000;
 }
 
 InfoAbout::InfoAbout(string model)
 {
 	this->model = model;
 	this->color = "Car color";
-	this->yearRelease = 2022;
+	this->yearRelease = 2000;
 }
 
 InfoAbout::InfoAbout(string model, string color, int yearRealease)

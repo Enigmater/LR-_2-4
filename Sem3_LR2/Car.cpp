@@ -51,6 +51,28 @@ Car::Car(InfoAbout info)
 	this->type.setNumberSeats(initType.getNumberSeats());
 }
 
+Car::Car(int numberSeats) {
+	InfoAbout initInfo;
+	Size initSize;
+	Parameters initParam;
+	TypeCar initType;
+
+	this->info.setModel(initInfo.getModel());
+	this->info.setColor(initInfo.getColor());
+	this->info.setYearRelease(initInfo.getYearRelease());
+
+	this->size.setLenght(initSize.getLenght());
+	this->size.setWidth(initSize.getWidth());
+	this->size.setHigh(initSize.getHigh());
+
+	this->param.setEnginePower(initParam.getEnginePower());
+	this->param.setTankCapacity(initParam.getTankCapacity());
+	this->param.setMaxSpeed(initParam.getMaxSpeed());
+	this->param.setMileage(initParam.getMileage());
+
+	this->type.setTypeBody(initType.getTypeBody());
+	this->type.setNumberSeats(numberSeats);
+}
 Car::Car(InfoAbout info, Size size, Parameters param, TypeCar type)
 {
 	this->info.setModel(info.getModel());
@@ -149,16 +171,20 @@ void Car::Print()
 	cout << "Кол-во сидений: " << this->type.getNumberSeats() << endl;
 }
 
-int Car::Age()
+void Car::Age(int *age)
 {
-	int age = THIS_YEAR - this->info.getYearRelease();
-	return age;
+	*age = THIS_YEAR - this->info.getYearRelease();
 }
 
-void Car::ComprasionByMilage(Car car)
+void Car::Age(int& age)
+{
+	age = THIS_YEAR - this->info.getYearRelease();
+}
+
+void ComprasionByMilage(Car &a,Car car)
 {
 	printf("\n\tСравнение машин по пробегу\n");
-	float difference = this->param.getMileage() - car.param.getMileage();
+	float difference = a.param.getMileage() - car.param.getMileage();
 	if (difference < 0) {
 		printf("Пробег первого авто < пробег вторго авто\n");
 	}

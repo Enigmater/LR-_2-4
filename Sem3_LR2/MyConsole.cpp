@@ -7,7 +7,7 @@
 #include "Car.h";
 #include "malloc.h"
 
-const int COUNT_CARS_DINAMIC = 2;
+const int COUNT_CARS_DINAMIC = 1;
 
 int main()
 {
@@ -17,24 +17,28 @@ int main()
 
     Car* car = new class Car[COUNT_CARS_DINAMIC];
 
-    cout << "\tВвод данных" << endl;
-    for (int i = 0; i < COUNT_CARS_DINAMIC; i++)
-    {
-        car[i].Read();
-    }
+    //cout << "\tВвод данных" << endl;
+    //for (int i = 0; i < COUNT_CARS_DINAMIC; i++)
+    //{
+    //    car[i].Read();
+    //}
 
     cout << "\n\tВывод данных" << endl;
+    int age = 0;
     for (int i = 0; i < COUNT_CARS_DINAMIC; i++)
     {
         car[i].Print();
-        cout << "\nВозраст машины: " << car[i].Age() << endl;
+        car[i].Age(&age);
+        cout << "\nВозраст машины (ссылка): " << age;
+        car[i].Age(age);
+        cout << "\nВозраст машины (адресс): " << age << endl;
     }
 
     Car* car1 = new Car;
     Car* car2 = new Car;
     car1->setMileage(10000.0f);
     car2->setMileage(12000.0f);
-    car1->ComprasionByMilage(*car2);
+    ComprasionByMilage(*car1, *car2);
 
     delete car1, car2;
     delete[] car;

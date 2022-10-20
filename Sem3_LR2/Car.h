@@ -30,6 +30,7 @@ const int THIS_YEAR = 2022;
 
 class Car
 {
+    friend void ComprasionByMilage(Car&, Car car);
 private:
     InfoAbout info;
     Size size;
@@ -37,6 +38,7 @@ private:
     TypeCar type;
 public:
     Car();
+    Car(int numberSeats);
     Car(InfoAbout info);
     Car(InfoAbout info, Size size, Parameters param, TypeCar type);
     ~Car();
@@ -45,9 +47,18 @@ public:
 
     void Read();
     void Print();
-    int Age();
-    void ComprasionByMilage(Car car);
+    void Age(int* age);
+    void Age(int& age);
 
+    Car operator + (Car car) {
+        return Car(this->type.getNumberSeats() + car.type.getNumberSeats());
+    };
+    Car& operator ++ () {
+        this->type.setNumberSeats(this->type.getNumberSeats() + 1);
+    };
+    Car& operator ++ (int) {
+
+    };
 };
 
 
