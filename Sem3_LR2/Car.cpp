@@ -171,6 +171,52 @@ void Car::Print()
 	cout << "Кол-во сидений: " << this->type.getNumberSeats() << endl;
 }
 
+void Car::FileRead()
+{
+	ifstream file;
+	try {
+		file.open("Cars.txt");
+	}
+	catch (const ifstream::failure& ex) {
+		cout << "Ошибка при открытии файла!" << endl;
+		cout << ex.what() << endl;
+	}
+	string model, color, body;
+	float len, width, high, engPower, tankCap, maxSpeed, mileage;
+	int yearRealiese, numSeats;
+	for (int i = 0; i < getCountCars(); i++) {
+		file >> model >> color >> yearRealiese;
+		file >> len >> width >> high;
+		file >> engPower >> tankCap >> maxSpeed >> mileage;
+		file >> body >> numSeats;
+	}
+	InfoAbout info(model, color, yearRealiese);
+	Size size(len, width, high);
+	Parameters param(engPower, tankCap, maxSpeed, mileage);
+	TypeCar type(body, numSeats);
+	this->setCar(info, size, param, type);
+	file.close();
+}
+
+void Car::FileWrite()
+{
+	ofstream file;
+	try {
+		file.open("Cars.txt");
+		throw ("Ошибка при открытии файла!");
+	}
+	catch (string msg) {
+		cout << msg << endl;
+	}
+	for (int i = 0; i < getCountCars(); i++) {
+		file << info.getModel() << endl << info.getColor() << endl << info.getYearRelease() << endl;
+		file << size.getLenght() << endl << size.getWidth() << endl << size.getHigh() << endl;
+		file << param.getEnginePower() << endl << param.getTankCapacity() << endl << param.getMaxSpeed() << endl << param.getMileage() << endl;
+		file << type.getTypeBody() << endl << type.getNumberSeats() << endl;
+	}
+	file.close();
+}
+
 void Car::Age(int *age)
 {
 	*age = THIS_YEAR - this->info.getYearRelease();
@@ -195,3 +241,5 @@ void ComprasionByMilage(Car &a,Car car)
 		printf("Пробег первого авто = пробег вторго авто\n");
 	}
 }
+
+int Car::countCars = 0;

@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <fstream>
 #include "InfoAbout.h"
 #include "Size.h"
 #include "Parameters.h"
@@ -45,6 +46,23 @@ public:
     ~Car();
 
     void setMileage(float mileage);
+    void setCar(InfoAbout info, Size size, Parameters param, TypeCar type) {
+        this->info.setModel(info.getModel());
+        this->info.setColor(info.getColor());
+        this->info.setYearRelease(info.getYearRelease());
+
+        this->size.setLenght(size.getLenght());
+        this->size.setWidth(size.getWidth());
+        this->size.setHigh(size.getHigh());
+
+        this->param.setEnginePower(param.getEnginePower());
+        this->param.setTankCapacity(param.getTankCapacity());
+        this->param.setMaxSpeed(param.getMaxSpeed());
+        this->param.setMileage(param.getMileage());
+
+        this->type.setTypeBody(type.getTypeBody());
+        this->type.setNumberSeats(type.getNumberSeats());
+    }
 
     static int getCountCars() {
         return countCars;
@@ -55,6 +73,10 @@ public:
 
     void Read();
     void Print();
+
+    void FileRead();
+    void FileWrite();
+
     void Age(int* age);
     void Age(int& age);
 
