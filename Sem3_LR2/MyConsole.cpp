@@ -5,9 +5,11 @@
 #include <string>
 
 #include "Car.h";
+#include "InfoAbout.h"
+#include "Condition.h"
 #include "malloc.h"
 
-const int COUNT_CARS_DINAMIC = 10;
+const int COUNT_CARS_DINAMIC = 1;
 
 int main()
 {
@@ -15,7 +17,9 @@ int main()
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251);
 
-    Car* car = new Car[COUNT_CARS_DINAMIC];
+    InfoAbout info;
+    Condition cond;
+  /*  Car* car = new Car[COUNT_CARS_DINAMIC];*/
 
     //cout << "\tВвод данных" << endl;
     //for (int i = 0; i < COUNT_CARS_DINAMIC; i++)
@@ -23,22 +27,27 @@ int main()
     //    car[i].Read();
     //}
 
-    cout << "\n\tВывод данных" << endl;
-    int age = 0;
-    
-    car->setCountCars(2);
-    for (int i = 0; i < car->getCountCars(); i++)
-    {
-        car[i].Print();
-        car[i].Age(&age);
-        cout << "\nВозраст машины (ссылка): " << age;
-        car[i].Age(age);
-        cout << "\nВозраст машины (адресс): " << age << endl;
-    }
+    /*cout << "Модель (базовый): " << info.getModel() << endl << endl;
+    cout << "Модель (производный): " << cond.getModel() << endl << endl;
+    car->Print();
+    cout << endl;*/
 
-    Car* car1 = new Car();
-    car1->FileRead();
-    car1->Print();
+    // Перегрузка <<
+    cout << info;
+    cout << endl;
+
+    // Перегрузка =
+    info.setModel("Car(info)");
+    cout << "Before: " << cond.getModel() << endl;
+    cond = info;
+    cout << "After: " << cond.getModel()<< endl;
+    cout << endl;
     
-    delete[] car;
+    // virtual
+    InfoAbout* inf = new Condition();
+    inf->setModel("Car model 1");
+    cout << inf->getModel() << endl;
+    cout << endl;
+
+   /* delete[] car;*/
 }

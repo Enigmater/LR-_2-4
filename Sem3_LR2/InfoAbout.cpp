@@ -1,4 +1,5 @@
 #include "InfoAbout.h"
+#include <iostream>
 
 InfoAbout::InfoAbout()
 {
@@ -7,10 +8,10 @@ InfoAbout::InfoAbout()
 	this->yearRelease = 2000;
 }
 
-InfoAbout::InfoAbout(string model)
+InfoAbout::InfoAbout(string model, string color)
 {
 	this->model = model;
-	this->color = "Car color";
+	this->color = color;
 	this->yearRelease = 2000;
 }
 
@@ -55,4 +56,9 @@ void InfoAbout::setYearRelease(int yearRelease)
 	this->yearRelease = yearRelease;
 }
 
-
+void operator<<(ostream&, InfoAbout p)
+{
+	cout << p.model << endl;
+	cout << p.color << endl;
+	cout << p.yearRelease << endl;
+}

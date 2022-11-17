@@ -4,12 +4,12 @@ using namespace std;
 
 class InfoAbout
 {
-private:
+protected:
 	string model, color;
 	int yearRelease;
 public:
 	InfoAbout();
-	InfoAbout(string model);
+	InfoAbout(string model, string color);
 	InfoAbout(string model, string color, int yearRealease);
 	~InfoAbout();
 
@@ -17,8 +17,10 @@ public:
 	string getColor();
 	int getYearRelease();
 
-	void setModel(string model);
+	virtual void setModel(string model);
 	void setColor(string color);
 	void setYearRelease(int yearRelease);
+
+	friend void operator << (ostream&, InfoAbout p);
 };
 

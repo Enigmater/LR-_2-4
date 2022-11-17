@@ -140,6 +140,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Car.cpp" />
+    <ClCompile Include="Condition.cpp" />
     <ClCompile Include="InfoAbout.cpp" />
     <ClCompile Include="MyConsole.cpp" />
     <ClCompile Include="Parameters.cpp" />
@@ -148,6 +149,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Car.h" />
+    <ClInclude Include="Condition.h" />
     <ClInclude Include="InfoAbout.h" />
     <ClInclude Include="Parameters.h" />
     <ClInclude Include="Size.h" />

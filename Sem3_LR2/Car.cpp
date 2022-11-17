@@ -14,6 +14,7 @@ Car::Car()
 	this->info.setModel(initInfo.getModel());
 	this->info.setColor(initInfo.getColor());
 	this->info.setYearRelease(initInfo.getYearRelease());
+	this->info.setCondition(3);
 
 	this->size.setLenght(initSize.getLenght());
 	this->size.setWidth(initSize.getWidth());
@@ -37,6 +38,7 @@ Car::Car(InfoAbout info)
 	this->info.setModel(info.getModel());
 	this->info.setColor(info.getColor());
 	this->info.setYearRelease(info.getYearRelease());
+	this->info.setCondition(3);
 
 	this->size.setLenght(initSize.getLenght());
 	this->size.setWidth(initSize.getWidth());
@@ -60,6 +62,7 @@ Car::Car(int numberSeats) {
 	this->info.setModel(initInfo.getModel());
 	this->info.setColor(initInfo.getColor());
 	this->info.setYearRelease(initInfo.getYearRelease());
+	this->info.setCondition(3);
 
 	this->size.setLenght(initSize.getLenght());
 	this->size.setWidth(initSize.getWidth());
@@ -78,6 +81,7 @@ Car::Car(InfoAbout info, Size size, Parameters param, TypeCar type)
 	this->info.setModel(info.getModel());
 	this->info.setColor(info.getColor());
 	this->info.setYearRelease(info.getYearRelease());
+	this->info.setCondition(3);
 
 	this->size.setLenght(size.getLenght());
 	this->size.setWidth(size.getWidth());
@@ -157,6 +161,7 @@ void Car::Print()
 	cout << "Модель: " << this->info.getModel() << endl;
 	cout << "Цвет: " << this->info.getColor() << endl;
 	cout << "Дата выпуска: " << this->info.getYearRelease() << endl;
+	cout << "Состояние (от 0 до 5): " << this->info.getCondition() << endl;
 
 	cout << "Длина: " << this->size.getLenght() << endl;
 	cout << "Ширина: " << this->size.getWidth() << endl;

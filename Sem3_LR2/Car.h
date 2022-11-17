@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
 #include <fstream>
-#include "InfoAbout.h"
+#include "Condition.h"
 #include "Size.h"
 #include "Parameters.h"
 #include "TypeCar.h"
@@ -32,9 +32,9 @@ const int THIS_YEAR = 2022;
 class Car
 {
     friend void ComprasionByMilage(Car&, Car car);
-private:
+public:
     static int countCars;
-    InfoAbout info;
+    Condition info;
     Size size;
     Parameters param;
     TypeCar type;
