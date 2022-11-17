@@ -7,7 +7,8 @@
 #include "Car.h";
 #include "InfoAbout.h"
 #include "Condition.h"
-#include "malloc.h"
+#include "AbstractClass.h"
+#include "Template.h"
 
 const int COUNT_CARS_DINAMIC = 1;
 
@@ -20,12 +21,6 @@ int main()
     InfoAbout info;
     Condition cond;
   /*  Car* car = new Car[COUNT_CARS_DINAMIC];*/
-
-    //cout << "\tВвод данных" << endl;
-    //for (int i = 0; i < COUNT_CARS_DINAMIC; i++)
-    //{
-    //    car[i].Read();
-    //}
 
     /*cout << "Модель (базовый): " << info.getModel() << endl << endl;
     cout << "Модель (производный): " << cond.getModel() << endl << endl;
@@ -45,8 +40,27 @@ int main()
     
     // virtual
     InfoAbout* inf = new Condition();
-    inf->setModel("Car model 1");
+    inf->setModel("VirtualCar");
     cout << inf->getModel() << endl;
+    cout << endl;
+
+    // abstract
+
+    Driver man;
+    Machine machine;
+    Motocycle motocycle;
+    Transport* transport = &machine;
+    man.PrintTransport(transport);
+    transport = &motocycle;
+    man.PrintTransport(transport);
+    cout << endl;
+
+    // template
+
+    Info<Machine> skoda("Skoda Octavia");
+    skoda.Print();
+    Info<Motocycle> racer("Racer Alpha");
+    racer.Print();
     cout << endl;
 
    /* delete[] car;*/
