@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
-#include "InfoAbout.h"
+#include <fstream>
+#include "Condition.h"
 #include "Size.h"
 #include "Parameters.h"
 #include "TypeCar.h"
@@ -10,36 +11,87 @@ using namespace std;
 const int THIS_YEAR = 2022;
 
 /*
-Структура Машина:
-    Структура Информация о машина:
+Класс Машина:
+    Класс Информация о машина:
         модель,
         цвет
-    Структура Размеры:
+    Класс Размеры:
         длина,
         ширина,
         высота
-    Структура Характеристики:
+    Класс Характеристики:
         мощность двигателя,
         объем бака,
         максимальная скорость
         пробег
-    Структура Тип машины:
+    Класс Тип машины:
         кузов,
         кол-во мест
 */
 
-struct Car {
-    struct InfoAbout info;
-    struct Size size;
-    struct Parameters param;
-    struct TypeCar type;
+class Car
+{
+    friend void ComprasionByMilage(Car&, Car car);
+public:
+    static int countCars;
+    Condition info;
+    Size size;
+    Parameters param;
+    TypeCar type;
+public:
+    Car();
+    Car(int numberSeats);
+    Car(InfoAbout info);
+    Car(InfoAbout info, Size size, Parameters param, TypeCar type);
+    ~Car();
+
+    void setMileage(float mileage);
+    void setCar(InfoAbout info, Size size, Parameters param, TypeCar type) {
+        this->info.setModel(info.getModel());
+        this->info.setColor(info.getColor());
+        this->info.setYearRelease(info.getYearRelease());
+
+        this->size.setLenght(size.getLenght());
+        this->size.setWidth(size.getWidth());
+        this->size.setHigh(size.getHigh());
+
+        this->param.setEnginePower(param.getEnginePower());
+        this->param.setTankCapacity(param.getTankCapacity());
+        this->param.setMaxSpeed(param.getMaxSpeed());
+        this->param.setMileage(param.getMileage());
+
+        this->type.setTypeBody(type.getTypeBody());
+        this->type.setNumberSeats(type.getNumberSeats());
+    }
+
+    static int getCountCars() {
+        return countCars;
+    }
+    static void setCountCars(int newCountCars) {
+        countCars = newCountCars;
+    }
+
+    void Read();
+    void Print();
+
+    void FileRead();
+    void FileWrite();
+
+    void Age(int* age);
+    void Age(int& age);
+
+    Car operator + (Car car) {
+        return Car(this->type.getNumberSeats() + car.type.getNumberSeats());
+    };
+    Car& operator ++ () {
+        this->param.setMaxSpeed(this->param.getMaxSpeed() + 10);
+        return *this;
+    };
+    Car operator ++ (int) {
+        Car post = *this;
+        ++* this;
+        return post;
+    };
 };
 
-Car CarInit(Car CarInit);
-void CarInputCP(struct Car car[], int countCars = 1);
-void CarOutputCP(struct Car car[], int countCars = 1);
-
-int CarAge(struct Car car);
-void PrintCarAge(struct Car car[], int countCars = 1);
-void ComprasionByMilage(struct Car car1, struct Car car2);
 

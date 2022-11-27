@@ -4,119 +4,247 @@
 #include "Car.h"
 #include <iostream>
 
-Car CarInit(Car CarInit)
+Car::Car()
 {
-    Car car{    
-        InfoInit(CarInit.info.model, CarInit.info.color, CarInit.info.yearRelease),      
-        SizeInit(CarInit.size.lenght, CarInit.size.width, CarInit.size.high),
-        ParamInit(CarInit.param.enginePower, CarInit.param.tankCapacity, CarInit.param.maxSpeed, CarInit.param.mileage), 
-        TypeCarInit(CarInit.type.typeBody, CarInit.type.numberSeats)
-    };
-    return car;
+	InfoAbout initInfo;
+	Size initSize;
+	Parameters initParam;
+	TypeCar initType;
+
+	this->info.setModel(initInfo.getModel());
+	this->info.setColor(initInfo.getColor());
+	this->info.setYearRelease(initInfo.getYearRelease());
+	this->info.setCondition(3);
+
+	this->size.setLenght(initSize.getLenght());
+	this->size.setWidth(initSize.getWidth());
+	this->size.setHigh(initSize.getHigh());
+
+	this->param.setEnginePower(initParam.getEnginePower());
+	this->param.setTankCapacity(initParam.getTankCapacity());
+	this->param.setMaxSpeed(initParam.getMaxSpeed());
+	this->param.setMileage(initParam.getMileage());
+
+	this->type.setTypeBody(initType.getTypeBody());
+	this->type.setNumberSeats(initType.getNumberSeats());
 }
 
-void CarInputCP(Car car[], int countCars)
+Car::Car(InfoAbout info)
 {
-    Car carInit;
-    cout << "Initiaization Mode" << endl;
-    carInit.info.model = "Car";
-    carInit.info.color = "Color";
-    carInit.info.yearRelease = 2000;
-    carInit.size.lenght = 2.0f;
-    carInit.size.width = 1.0f;
-    carInit.size.high = 1.0f;
-    carInit.param.enginePower = 150.0f;
-    carInit.param.tankCapacity = 50.0f;
-    carInit.param.maxSpeed = 200.0f;
-    carInit.param.mileage = 10000.0f;
-    carInit.type.typeBody = "Sedan";
-    carInit.type.numberSeats = 5;
-    for (int i = 0; i < countCars; i++)
-    {
-#ifndef DEBUG
-        printf("\tCar %d\n", i + 1);
-        printf("Модель: ");
-        scanf("%s", &carInit.info.model);
-        printf("Цвет: ");
-        scanf("%s", &carInit.info.color);
+	Size initSize;
+	Parameters initParam;
+	TypeCar initType;
 
-        printf("Размеры(длина): ");
-        scanf("%f", &carInit.size.lenght);
-        printf("Размеры(ширина): ");
-        scanf("%f", &carInit.size.width);
-        printf("Размеры(высота): ");
-        scanf("%f", &carInit.size.high);
+	this->info.setModel(info.getModel());
+	this->info.setColor(info.getColor());
+	this->info.setYearRelease(info.getYearRelease());
+	this->info.setCondition(3);
 
-        printf("Параметры(Мощность): ");
-        scanf("%f", &carInit.param.enginePower);
-        printf("Параметры(Объем бака): ");
-        scanf("%f", &carInit.param.tankCapacity);
-        printf("Параметры(Максимальная скорость): ");
-        scanf("%f", &carInit.param.maxSpeed);
-        printf("Параметры(Пробег): ");
-        scanf("%f", &carInit.param.mileage);
+	this->size.setLenght(initSize.getLenght());
+	this->size.setWidth(initSize.getWidth());
+	this->size.setHigh(initSize.getHigh());
 
-        printf("Тип(Кузов): ");
-        scanf("%s", &carInit.type.typeBody);
-        printf("Тип(Кол-во мест): ");
-        scanf("%d", &carInit.type.numberSeats);
-#endif // DEBUG
-        car[i] = CarInit(carInit);
-    }
+	this->param.setEnginePower(initParam.getEnginePower());
+	this->param.setTankCapacity(initParam.getTankCapacity());
+	this->param.setMaxSpeed(initParam.getMaxSpeed());
+	this->param.setMileage(initParam.getMileage());
+
+	this->type.setTypeBody(initType.getTypeBody());
+	this->type.setNumberSeats(initType.getNumberSeats());
 }
 
-void CarOutputCP(Car car[], int countCars)
+Car::Car(int numberSeats) {
+	InfoAbout initInfo;
+	Size initSize;
+	Parameters initParam;
+	TypeCar initType;
+
+	this->info.setModel(initInfo.getModel());
+	this->info.setColor(initInfo.getColor());
+	this->info.setYearRelease(initInfo.getYearRelease());
+	this->info.setCondition(3);
+
+	this->size.setLenght(initSize.getLenght());
+	this->size.setWidth(initSize.getWidth());
+	this->size.setHigh(initSize.getHigh());
+
+	this->param.setEnginePower(initParam.getEnginePower());
+	this->param.setTankCapacity(initParam.getTankCapacity());
+	this->param.setMaxSpeed(initParam.getMaxSpeed());
+	this->param.setMileage(initParam.getMileage());
+
+	this->type.setTypeBody(initType.getTypeBody());
+	this->type.setNumberSeats(numberSeats);
+}
+Car::Car(InfoAbout info, Size size, Parameters param, TypeCar type)
 {
-    for (int i = 0; i < countCars; i++)
-    {
-        printf("\tCar %d\n", i + 1);
-        printf("Модель: %s\n", car[i].info.model);
-        printf("Цвет: %s\n", car[i].info.color);
-        printf("Дата выпуска: %d\n", car[i].info.yearRelease);
+	this->info.setModel(info.getModel());
+	this->info.setColor(info.getColor());
+	this->info.setYearRelease(info.getYearRelease());
+	this->info.setCondition(3);
 
-        printf("Размеры(длина): %f\n", car[i].size.lenght);
-        printf("Размеры(ширина): %f\n", car[i].size.width);
-        printf("Размеры(высота): %f\n", car[i].size.high);
+	this->size.setLenght(size.getLenght());
+	this->size.setWidth(size.getWidth());
+	this->size.setHigh(size.getHigh());
 
-        printf("Параметры(Мощность): %f\n", car[i].param.enginePower);
-        printf("Параметры(Объем бака): %f\n", car[i].param.tankCapacity);
-        printf("Параметры(Максимальная скорость): %f\n", car[i].param.maxSpeed);
-        printf("Параметры(пробег): %f\n", car[i].param.mileage);
+	this->param.setEnginePower(param.getEnginePower());
+	this->param.setTankCapacity(param.getTankCapacity());
+	this->param.setMaxSpeed(param.getMaxSpeed());
+	this->param.setMileage(param.getMileage());
 
-        printf("Тип(Кузов): %s\n", car[i].type.typeBody);
-        printf("Тип(Кол-во мест): %d\n", car[i].type.numberSeats);
-    }
+	this->type.setTypeBody(type.getTypeBody());
+	this->type.setNumberSeats(type.getNumberSeats());
 }
 
-int CarAge(Car car)
+Car::~Car()
 {
-    int age = THIS_YEAR - car.info.yearRelease;
-    return age;
 }
 
-void PrintCarAge(struct Car car[], int countCars)
+void Car::setMileage(float mileage)
 {
-    printf("\n\tВозраст машины\n");
-    for (int i = 0; i < countCars; i++) {
-        printf("Age Car#%d = %d\n", i + 1, CarAge(car[i]));
-    } 
+	this->param.setMileage(mileage);
 }
 
-void ComprasionByMilage(Car car1, Car car2)
+void Car::Read()
 {
-    printf("\n\tСравнение машин по пробегу\n");
-    float difference = car1.param.mileage - car2.param.mileage;
-    if (difference < 0) {
-        printf("Пробег первого авто < пробег вторго авто\n");
-    }
-    else if (difference > 0) {
-        printf("Пробег первого авто > пробег вторго авто\n");
-    }
-    else {
-        printf("Пробег первого авто = пробег вторго авто\n");
-    }
+	string model, color;
+	int yearRelease;
+	cout << "Модель: ";
+	cin >> model;
+	cout << "Цвет: ";
+	cin >> color;
+	cout << "Дата выпуска: ";
+	cin >> yearRelease;
+
+	float len, widht, high;
+	cout << "Длина: ";
+	cin >> len;
+	cout << "Ширина: ";
+	cin >> widht;
+	cout << "Высота: ";
+	cin >> high;
+
+	float enginePower, tankCapacity, maxSpeed, mileage;
+	cout << "Мощность двигателя: ";
+	cin >> enginePower;
+	cout << "Объем бака: ";
+	cin >> tankCapacity;
+	cout << "Максимальная скорость: ";
+	cin >> maxSpeed;
+	cout << "Пробег: ";
+	cin >> mileage;
+
+	string typeBody;
+	int numSeats;
+	cout << "Кузов: ";
+	cin >> typeBody;
+	cout << "Кол-во сидений: ";
+	cin >> numSeats;
+	cout << endl;
+
+	this->info.setModel(model);
+	this->info.setColor(color);
+	this->info.setYearRelease(yearRelease);
+	this->size.setLenght(len);
+	this->size.setWidth(widht);
+	this->size.setHigh(high);
+	this->param.setEnginePower(enginePower);
+	this->param.setTankCapacity(tankCapacity);
+	this->param.setMaxSpeed(maxSpeed);
+	this->param.setMileage(mileage);
+	this->type.setTypeBody(typeBody);
+	this->type.setNumberSeats(numSeats);
 }
 
+void Car::Print()
+{
+	cout << "Модель: " << this->info.getModel() << endl;
+	cout << "Цвет: " << this->info.getColor() << endl;
+	cout << "Дата выпуска: " << this->info.getYearRelease() << endl;
+	cout << "Состояние (от 0 до 5): " << this->info.getCondition() << endl;
 
+	cout << "Длина: " << this->size.getLenght() << endl;
+	cout << "Ширина: " << this->size.getWidth() << endl;
+	cout << "Высота: " << this->size.getHigh() << endl;
 
+	cout << "Мощность двигателя: " << this->param.getEnginePower() << endl;
+	cout << "Объем бака: " << this->param.getTankCapacity() << endl;
+	cout << "Максимальная скорость: " << this->param.getMaxSpeed() << endl;
+	cout << "Пробег: " << this->param.getMileage() << endl;
 
+	cout << "Кузов: " << this->type.getTypeBody() << endl;
+	cout << "Кол-во сидений: " << this->type.getNumberSeats() << endl;
+}
+
+void Car::FileRead()
+{
+	ifstream file;
+	try {
+		file.open("Cars.txt");
+	}
+	catch (const ifstream::failure& ex) {
+		cout << "Ошибка при открытии файла!" << endl;
+		cout << ex.what() << endl;
+	}
+	string model, color, body;
+	float len, width, high, engPower, tankCap, maxSpeed, mileage;
+	int yearRealiese, numSeats;
+	for (int i = 0; i < getCountCars(); i++) {
+		file >> model >> color >> yearRealiese;
+		file >> len >> width >> high;
+		file >> engPower >> tankCap >> maxSpeed >> mileage;
+		file >> body >> numSeats;
+	}
+	InfoAbout info(model, color, yearRealiese);
+	Size size(len, width, high);
+	Parameters param(engPower, tankCap, maxSpeed, mileage);
+	TypeCar type(body, numSeats);
+	this->setCar(info, size, param, type);
+	file.close();
+}
+
+void Car::FileWrite()
+{
+	ofstream file;
+	try {
+		file.open("Cars.txt");
+		throw ("Ошибка при открытии файла!");
+	}
+	catch (string msg) {
+		cout << msg << endl;
+	}
+	for (int i = 0; i < getCountCars(); i++) {
+		file << info.getModel() << endl << info.getColor() << endl << info.getYearRelease() << endl;
+		file << size.getLenght() << endl << size.getWidth() << endl << size.getHigh() << endl;
+		file << param.getEnginePower() << endl << param.getTankCapacity() << endl << param.getMaxSpeed() << endl << param.getMileage() << endl;
+		file << type.getTypeBody() << endl << type.getNumberSeats() << endl;
+	}
+	file.close();
+}
+
+void Car::Age(int *age)
+{
+	*age = THIS_YEAR - this->info.getYearRelease();
+}
+
+void Car::Age(int& age)
+{
+	age = THIS_YEAR - this->info.getYearRelease();
+}
+
+void ComprasionByMilage(Car &a,Car car)
+{
+	printf("\n\tСравнение машин по пробегу\n");
+	float difference = a.param.getMileage() - car.param.getMileage();
+	if (difference < 0) {
+		printf("Пробег первого авто < пробег вторго авто\n");
+	}
+	else if (difference > 0) {
+		printf("Пробег первого авто > пробег вторго авто\n");
+	}
+	else {
+		printf("Пробег первого авто = пробег вторго авто\n");
+	}
+}
+
+int Car::countCars = 0;

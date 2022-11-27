@@ -140,6 +140,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Car.cpp" />
+    <ClCompile Include="Condition.cpp" />
     <ClCompile Include="InfoAbout.cpp" />
     <ClCompile Include="MyConsole.cpp" />
     <ClCompile Include="Parameters.cpp" />
@@ -147,10 +148,13 @@
     <ClCompile Include="TypeCar.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AbstractClass.h" />
     <ClInclude Include="Car.h" />
+    <ClInclude Include="Condition.h" />
     <ClInclude Include="InfoAbout.h" />
     <ClInclude Include="Parameters.h" />
     <ClInclude Include="Size.h" />
+    <ClInclude Include="Template.h" />
     <ClInclude Include="TypeCar.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

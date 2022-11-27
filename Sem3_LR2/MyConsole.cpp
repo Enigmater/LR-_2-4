@@ -5,10 +5,12 @@
 #include <string>
 
 #include "Car.h";
-#include "malloc.h"
+#include "InfoAbout.h"
+#include "Condition.h"
+#include "AbstractClass.h"
+#include "Template.h"
 
-const int COUNT_CARS_STATIC = 2;
-const int COUNT_CARS_DINAMIC = 2;
+const int COUNT_CARS_DINAMIC = 1;
 
 int main()
 {
@@ -16,28 +18,50 @@ int main()
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251);
 
-    printf("\tStatic\n");
-    struct Car staticMemory[COUNT_CARS_STATIC];
-    printf("\tВвод");
-    printf("\n___________________________________________\n");
-    CarInputCP(staticMemory, COUNT_CARS_STATIC);
-    printf("\tВывод\n");
-    CarOutputCP(staticMemory, COUNT_CARS_STATIC);
-    PrintCarAge(staticMemory, COUNT_CARS_STATIC);
-    printf("\n___________________________________________\n");
+    InfoAbout info;
+    Condition cond;
+  /*  Car* car = new Car[COUNT_CARS_DINAMIC];*/
 
-    struct Car staticMemory1;
-    struct Car staticMemory2;
-    CarInputCP(&staticMemory1);
-    CarInputCP(&staticMemory2);
+    /*cout << "Модель (базовый): " << info.getModel() << endl << endl;
+    cout << "Модель (производный): " << cond.getModel() << endl << endl;
+    car->Print();
+    cout << endl;*/
 
-    ComprasionByMilage(staticMemory1, staticMemory2);
+    // Перегрузка <<
+    cout << info;
+    cout << endl;
 
-    printf("\n___________________________________________\n");
-    printf("\tDinamic\n\n");
-    struct Car* dinamicMemory = (Car*)calloc(COUNT_CARS_DINAMIC, sizeof(Car));
-    printf("\tВвод\n");
-    CarInputCP(dinamicMemory, COUNT_CARS_DINAMIC);
-    printf("\tВывод\n");
-    CarOutputCP(dinamicMemory, COUNT_CARS_DINAMIC);
+    // Перегрузка =
+    info.setModel("Car(info)");
+    cout << "Before: " << cond.getModel() << endl;
+    cond = info;
+    cout << "After: " << cond.getModel()<< endl;
+    cout << endl;
+    
+    // virtual
+    InfoAbout* inf = new Condition();
+    inf->setModel("VirtualCar");
+    cout << inf->getModel() << endl;
+    cout << endl;
+
+    // abstract
+
+    Driver man;
+    Machine machine;
+    Motocycle motocycle;
+    Transport* transport = &machine;
+    man.PrintTransport(transport);
+    transport = &motocycle;
+    man.PrintTransport(transport);
+    cout << endl;
+
+    // template
+
+    Info<Machine> skoda("Skoda Octavia");
+    skoda.Print();
+    Info<Motocycle> racer("Racer Alpha");
+    racer.Print();
+    cout << endl;
+
+   /* delete[] car;*/
 }
